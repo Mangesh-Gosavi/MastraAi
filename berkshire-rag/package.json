@@ -1,0 +1,43 @@
+{
+  "name": "berkshire-rag",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mastra dev",
+    "build": "mastra build",
+    "start": "mastra start",
+    "ingest": "tsx src/mastra/rag/ingest.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "@ai-sdk/openai": "^3.0.63",
+    "@mastra/core": "^1.34.0",
+    "@mastra/evals": "^1.2.2",
+    "@mastra/libsql": "^1.10.1",
+    "@mastra/loggers": "^1.1.1",
+    "@mastra/memory": "^1.18.1",
+    "@mastra/observability": "^1.12.0",
+    "@mastra/pg": "^1.10.1",
+    "@mastra/rag": "^2.2.1",
+    "ollama": "^0.6.3",
+    "openai": "^6.37.0",
+    "pdfjs-dist": "^5.6.205",
+    "pg": "^8.20.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "@types/pg": "^8.20.0",
+    "mastra": "^1.9.2",
+    "tsx": "^4.22.0",
+    "typescript": "^6.0.3"
+  }
+}
