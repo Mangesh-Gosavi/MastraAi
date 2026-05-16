@@ -1,7 +1,7 @@
 import { openai } from '@ai-sdk/openai';
 import { Agent } from '@mastra/core/agent';
-import { LibSQLStore } from '@mastra/libsql';
 import { Memory } from '@mastra/memory';
+import { PostgresStore } from '@mastra/pg';
 
 import { searchShareholderLettersTool } from '../tools/shareholder-letters-tool';
 
@@ -55,9 +55,9 @@ export const berkshireAgent = new Agent({
   },
 
   memory: new Memory({
-    storage: new LibSQLStore({
+    storage: new PostgresStore({
       id: 'berkshire-memory',
-      url: 'file:./mastra.db',
+      connectionString: process.env.DATABASE_URL!,
     }),
     options: {
       lastMessages: 10,

@@ -1,12 +1,12 @@
 import { Mastra } from '@mastra/core/mastra';
 import { PinoLogger } from '@mastra/loggers';
-import { LibSQLStore } from '@mastra/libsql';
 import {
   Observability,
   MastraStorageExporter,
   MastraPlatformExporter,
   SensitiveDataFilter,
 } from '@mastra/observability';
+import { PostgresStore } from '@mastra/pg';
 
 import { berkshireAgent } from './agents/berkshire-agent';
 import { ensureIndex, vectorStore } from './vector/store';
@@ -20,9 +20,9 @@ export const mastra = new Mastra({
   agents: { berkshireAgent },
   workflows: { ingestWorkflow },
   vectors: { berkshireVector: vectorStore },
-  storage: new LibSQLStore({
+  storage: new PostgresStore({
     id: 'mastra-storage',
-    url: 'file:./mastra.db',
+    connectionString: process.env.DATABASE_URL!,
   }),
   logger: new PinoLogger({
     name: 'Mastra',
